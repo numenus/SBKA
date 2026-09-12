@@ -1,4 +1,4 @@
-using CoreAudioApi;
+using NAudio.CoreAudioApi;
 using Microsoft.Win32;
 using NAudio;
 using NAudio.Wave;
@@ -21,11 +21,11 @@ namespace SBKA
             var sndDevEnum = new MMDeviceEnumerator();
 
             //Get Default Snd Device
-            string deviceid = sndDevEnum.GetDefaultAudioEndpoint(EDataFlow.eRender, ERole.eMultimedia).ID;
+            string deviceid = sndDevEnum.GetDefaultAudioEndpoint(DataFlow.Render, Role.Multimedia).ID;
 
             if (Properties.Settings.Default.AudioDevice != "Default")
             {
-                var devices = sndDevEnum.EnumerateAudioEndPoints(EDataFlow.eRender, EDeviceState.DEVICE_STATE_ACTIVE);
+                var devices = sndDevEnum.EnumerateAudioEndPoints(DataFlow.Render, DeviceState.Active);
                 for (int i = 0; i < devices.Count; i++)
                 {
                     if (devices[i].FriendlyName == devicefriendlyname)

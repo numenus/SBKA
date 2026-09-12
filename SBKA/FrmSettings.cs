@@ -1,4 +1,4 @@
-using CoreAudioApi;
+using NAudio.CoreAudioApi;
 using System.Data;
 
 namespace SBKA
@@ -32,7 +32,7 @@ namespace SBKA
             var sndDevEnum = new MMDeviceEnumerator();
             cbDevices.Items.Clear();
             cbDevices.Items.Add("Default");
-            var devices = sndDevEnum.EnumerateAudioEndPoints(EDataFlow.eRender, EDeviceState.DEVICE_STATE_ACTIVE);
+            var devices = sndDevEnum.EnumerateAudioEndPoints(DataFlow.Render, DeviceState.Active);
             for (int i = 0; i < devices.Count; i++)
             {
                 cbDevices.Items.Add(devices[i].FriendlyName);
